@@ -1,8 +1,8 @@
-FROM ubuntu:latest
+FROM ubuntu:16.04
 
 COPY ./plex.deb /installer/
 
-RUN apt-get update && apt-get -y install avahi-daemon dbus libssl1.0.0 libssl-dev libva-dev udev && dpkg --install /installer/plex.deb
+RUN apt-get update && apt-get -y install avahi-daemon dbus libssl1.0.0 libssl-dev libva-dev udev && dpkg --install --force-confold /installer/plex.deb
 
 EXPOSE 32400/tcp 32400/udp 32469 32469/udp 5353/udp 1900/udp
 
