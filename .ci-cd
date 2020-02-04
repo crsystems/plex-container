@@ -7,7 +7,7 @@ pipeline {
 
 			}
                         steps {
-				sh 'version_update.sh'
+				sh './version_update.sh'
 				sh 'curl -o plex.deb https://downloads.plex.tv/plex-media-server-new/$(cat .version)/debian/plexmediaserver_$(cat .version)_amd64.deb'
                                 sh 'docker build --no-cache -t crsystems/plex:$(cat .version) .'
 				sh 'docker build -t crsystems/plex:latest .'
